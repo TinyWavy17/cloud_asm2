@@ -1,0 +1,87 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>ANT Store</title>
+    </head>
+
+    <style>
+
+        h1 {
+            color: brown;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        body {
+            margin: 0px 50px;
+        }
+
+        input {
+            padding: 10px 20px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #150b44;
+            color: white;
+            border-radius: 8px;
+        }
+
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto;
+            background-color: #7097b6;
+            padding: 10px;
+          }
+          .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+          }
+          ul li {
+            margin-bottom: 20px;
+          }
+    </style>
+
+    <body>
+        <h1>ANT Store</h1>
+
+        <div class="grid-container">
+            <div class="grid-item ">
+                <h3>CREATE</h3>
+        <!-- (1): CREATE Task -->         
+        <!-- --> 
+        <form action="/quotes" method="POST">   
+            <input type="text" placeholder="Please enter NAME toy..." name="name" /> <br>
+            <input type="number" placeholder="Please enter PRICE toy..." name="price" min="10000" max="5000000" step="1000" /> <br>
+            <button type="submit">Submit</button>
+        </form>
+        <!-- -->      
+            </div>
+
+            <div class="grid-item ">
+                 <!-- (2) READ Task -->   
+                <h3> READ</h3>
+                <ul class="quotes">
+                    <!-- Loop through quotes -->
+                    <% for(var i = 0; i < quotes.length; i++) {%>
+                        <li class="quote">
+                            <!-- Output name from the iterated quote object -->
+                            <span><%= quotes[i].name %></span>:
+                            <!-- Output quote from the iterated quote object -->
+                            <span><%= quotes[i].price %></span> VND
+                        </li>
+                    <% } %>
+                </ul>    
+            </div>
+        </div>
+    
+    </body>
+
+</html>
